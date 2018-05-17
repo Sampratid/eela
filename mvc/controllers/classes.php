@@ -35,11 +35,11 @@ class Classes extends Admin_Controller {
 				'label' => $this->lang->line("classes_numeric"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classes_numeric|callback_valid_number'
 			), 
-			array(
-				'field' => 'teacherID', 
-				'label' => $this->lang->line("teacher_name"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
-			),
+			// array(
+			// 	'field' => 'teacherID', 
+			// 	'label' => $this->lang->line("teacher_name"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
+			// ),
 			array(
 				'field' => 'note', 
 				'label' => $this->lang->line("classes_note"), 
@@ -77,7 +77,7 @@ class Classes extends Admin_Controller {
 				$array = array(
 					"classes" => $this->input->post("classes"),
 					"classes_numeric" => $this->input->post("classes_numeric"),
-					"teacherID" => $this->input->post("teacherID"),
+					// "teacherID" => $this->input->post("teacherID"),
 					"studentmaxID" => 999999999,
 					"note" => $this->input->post("note"),
 					"create_date" => date("Y-m-d h:i:s"),
@@ -109,7 +109,7 @@ class Classes extends Admin_Controller {
 		);
 		$id = htmlentities(escapeString($this->uri->segment(3)));
 		if((int)$id) {
-			$this->data['teachers'] = $this->classes_m->get_teacher();
+			// $this->data['teachers'] = $this->classes_m->get_teacher();
 			$this->data['classes'] = $this->classes_m->get_classes($id);
 			if($this->data['classes']) {
 
@@ -130,7 +130,7 @@ class Classes extends Admin_Controller {
 						$array = array(
 							"classes" => $this->input->post("classes"),
 							"classes_numeric" => $this->input->post("classes_numeric"),
-							"teacherID" => $this->input->post("teacherID"),
+							// "teacherID" => $this->input->post("teacherID"),
 							"studentmaxID" => 999999999,
 							"note" => $this->input->post("note"),
 							"modify_date" => date("Y-m-d h:i:s")
@@ -208,13 +208,13 @@ class Classes extends Admin_Controller {
 		}	
 	}
 
-	function allteacher() {
-		if($this->input->post('teacherID') == 0) {
-			$this->form_validation->set_message("allteacher", "The %s field is required");
-	     	return FALSE;
-		}
-		return TRUE;
-	}
+	// function allteacher() {
+	// 	if($this->input->post('teacherID') == 0) {
+	// 		$this->form_validation->set_message("allteacher", "The %s field is required");
+	//      	return FALSE;
+	// 	}
+	// 	return TRUE;
+	// }
 
 	function valid_number() {
 		if($this->input->post('classes_numeric') < 0) {
