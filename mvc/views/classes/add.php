@@ -50,31 +50,31 @@
                         </span>
                     </div>
 
-                    <?php
-                        if(form_error('teacherID'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
-                    ?>
+                    <!-- //<?php
+                    //     if(form_error('teacherID'))
+                    //         echo "<div class='form-group has-error' >";
+                    //     else
+                    //         echo "<div class='form-group' >";
+                    // ?>
                         <label for="teacherID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("teacher_name")?> <span class="text-red">*</span>
+                           // <?=$this->lang->line("teacher_name")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
 
-                            <?php
-                                $array = array();
-                                $array[0] = $this->lang->line("classes_select_teacher");
+                         //   <?php
+                         //       $array = array();
+                         //       $array[0] = $this->lang->line("classes_select_teacher");
 
-                                foreach ($teachers as $teacher) {
-                                    $array[$teacher->teacherID] = $teacher->name;
-                                }
-                                echo form_dropdown("teacherID", $array, set_value("teacherID"), "id='teacherID' class='form-control select2'");
-                            ?>
+                          //      foreach ($teachers as $teacher) {
+                          //          $array[$teacher->teacherID] = $teacher->name;
+                          //      }
+                          //      echo form_dropdown("teacherID", $array, set_value("teacherID"), "id='teacherID' class='form-control select2'");
+                         //   ?>
                         </div>
                         <span class="col-sm-4 control-label">
-                            <?php echo form_error('teacherID'); ?>
+                           // <?php echo form_error('teacherID'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                         if(form_error('note'))
