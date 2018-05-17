@@ -50,7 +50,7 @@ class Setting_m extends MY_Model {
 
 	public function insert_setting($array) {
 		$this->db->insert('setting', $array);
-		return TRUE; 
+		return TRUE;
 	}
 
 	public function get_markpercentage() {
@@ -73,7 +73,7 @@ class Setting_m extends MY_Model {
 	// 	return $id;
 	// }
 
-	
+
 }
 
 /* End of file setting_m.php */

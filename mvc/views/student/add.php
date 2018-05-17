@@ -313,6 +313,71 @@
                     </div>
 
                     <?php
+                         if(form_error('sectionID'))
+                             echo "<div class='form-group has-error' >";
+                         else
+                             echo "<div class='form-group' >";
+                     ?>
+                         <label for="sectionID" class="col-sm-2 control-label">
+                             <?=$this->lang->line("student_section")?> <span class="text-red">*</span>
+                         </label>
+                         <?php if(permissionChecker('section_add')) { ?>
+                             <div class="col-sm-6">
+                                 <div class="input-group">
+                                     <?php
+                                         $array = array(0 => $this->lang->line("student_select_section"));
+                                         if($sections != "empty") {
+                                             foreach ($sections as $section) {
+                                                 $array[$section->sectionID] = $section->section;
+                                             }
+                                         }
+
+                                         $sID = 0;
+                                         if($sectionID == 0) {
+                                             $sID = 0;
+                                         } else {
+                                             $sID = $sectionID;
+                                         }
+
+                                         echo form_dropdown("sectionID", $array, set_value("sectionID", $sID), "id='sectionID' class='form-control select2'");
+
+                                     ?>
+                                     <span class="input-group-addon btn btn-danger">
+                                         <a  href="<?=base_url('section/add')?>">
+                                             <i class="fa fa-plus"></i>
+                                             <?=$this->lang->line('student_quick_add')?>
+                                         </a>
+                                     </span>
+                                 </div>
+                             </div>
+                         <?php } else { ?>
+                             <div class="col-sm-6">
+                                 <?php
+                                     $array = array(0 => $this->lang->line("student_select_section"));
+                                     if($sections != "empty") {
+                                         foreach ($sections as $section) {
+                                             $array[$section->sectionID] = $section->section;
+                                         }
+                                     }
+
+                                     $sID = 0;
+                                     if($sectionID == 0) {
+                                         $sID = 0;
+                                     } else {
+                                         $sID = $sectionID;
+                                     }
+
+                                     echo form_dropdown("sectionID", $array, set_value("sectionID", $sID), "id='sectionID' class='form-control select2'");
+                                 ?>
+                             </div>
+                         <?php } ?>
+                         <span class="col-sm-4 control-label">
+                             <?php echo form_error('sectionID'); ?>
+                         </span>
+                     </div>
+
+
+                    <?php
                         if(form_error('registerNO'))
                             echo "<div class='form-group has-error' >";
                         else
@@ -328,6 +393,26 @@
                             <?php echo form_error('registerNO'); ?>
                         </span>
                     </div>
+
+
+                    <!-- <label for="sibling_1" class="col-sm-2 control-label">
+                        Sibling Name 1
+
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="sibling_1" name="sibling_1" value="<?=set_value('sibling_1')?>" >
+                    </div>
+
+                  </div>
+                    <label for="sibling_2" class="col-sm-2 control-label">
+                        Sibling Name 1
+
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="sibling_2" name="sibling_2" value="<?=set_value('sibling_2')?>" >
+                    </div>
+                  </div> -->
+
 
                     <?php
                         if(form_error('roll'))

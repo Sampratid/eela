@@ -9,7 +9,7 @@ class signin_m extends MY_Model {
 	}
 
 	public function signin() {
-		$tables = array('student' => 'student', 'user' => 'user', 'systemadmin' => 'systemadmin');
+		$tables = array('systemadmin' => 'systemadmin');
 
 		$settings = $this->setting_m->get_setting(1);
 		$lang = $settings->language;

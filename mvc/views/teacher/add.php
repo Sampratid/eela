@@ -203,7 +203,7 @@
                         </span>
                     </div>
 
-                    <?php
+                    <!-- <?php
                         if(form_error('username'))
                             echo "<div class='form-group has-error' >";
                         else
@@ -235,7 +235,7 @@
                          <span class="col-sm-4 control-label">
                             <?php echo form_error('password'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">

@@ -30,7 +30,7 @@ class Section_m extends MY_Model {
 		$this->db->select('*');
 		$this->db->from('section');
 		$this->db->join('classes', 'section.sectionID = classes.classesID', 'LEFT');
-		// $this->db->where('section.ClassesID', $id);
+		$this->db->where('section.ClassesID', $id);
 		$query = $this->db->get();
 		return $query->result();
 	}

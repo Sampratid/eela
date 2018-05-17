@@ -72,17 +72,17 @@ class Teacher extends Admin_Controller {
 				'field' => 'photo',
 				'label' => $this->lang->line("teacher_photo"),
 				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
-			),
-			array(
-				'field' => 'username',
-				'label' => $this->lang->line("teacher_username"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean|callback_lol_username'
-			),
-			array(
-				'field' => 'password',
-				'label' => $this->lang->line("teacher_password"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean'
 			)
+			// array(
+			// 	'field' => 'username',
+			// 	'label' => $this->lang->line("teacher_username"),
+			// 	'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean|callback_lol_username'
+			// ),
+			// array(
+			// 	'field' => 'password',
+			// 	'label' => $this->lang->line("teacher_password"),
+			// 	'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean'
+			// )
 		);
 		return $rules;
 	}
@@ -167,8 +167,8 @@ class Teacher extends Admin_Controller {
 				$array['phone'] = $this->input->post("phone");
 				$array['address'] = $this->input->post("address");
 				$array['jod'] = date("Y-m-d", strtotime($this->input->post("jod")));
-				$array['username'] = $this->input->post("username");
-				$array['password'] = $this->teacher_m->hash($this->input->post("password"));
+				// $array['username'] = $this->input->post("username");
+				// $array['password'] = $this->teacher_m->hash($this->input->post("password"));
 				$array['usertypeID'] = 2;
 				$array["create_date"] = date("Y-m-d h:i:s");
 				$array["modify_date"] = date("Y-m-d h:i:s");
@@ -179,7 +179,7 @@ class Teacher extends Admin_Controller {
 				$array['photo'] = $this->upload_data['file']['file_name'];
 
 				// For Email
-				$this->usercreatemail($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
+				// $this->usercreatemail($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
 
 				$this->teacher_m->insert_teacher($array);
 				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
