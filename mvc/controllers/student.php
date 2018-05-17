@@ -84,11 +84,11 @@ class Student extends Admin_Controller {
 				'label' => $this->lang->line("student_classes"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classesID'
 			),
-			// array(
-			// 	'field' => 'sectionID',
-			// 	'label' => $this->lang->line("student_section"),
-			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
-			// ),
+			array(
+				'field' => 'sectionID',
+				'label' => $this->lang->line("student_section"),
+				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
+			),
 			array(
 				'field' => 'registerNO',
 				'label' => $this->lang->line("student_registerNO"),
@@ -276,18 +276,18 @@ class Student extends Admin_Controller {
 
 		$usertype = $this->session->userdata("usertype");
 		$this->data['classes'] = $this->student_m->get_classes();
-		// $this->data['sections'] = $this->section_m->get_section();
+		$this->data['sections'] = $this->section_m->get_section();
 		$this->data['parents'] = $this->parents_m->get_parents();
 
 
 		$classesID = $this->input->post("classesID");
 
-		// if($classesID != 0) {
-		// 	$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" =>$classesID));
-		// } else {
-		// 	$this->data['sections'] = "empty";
-		// }
-		// $this->data['sectionID'] = $this->input->post("sectionID");
+		if($classesID != 0) {
+			$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" =>$classesID));
+		} else {
+			$this->data['sections'] = "empty";
+		}
+		$this->data['sectionID'] = $this->input->post("sectionID");
 
 		if($_POST) {
 			$rules = $this->rules();
@@ -297,15 +297,15 @@ class Student extends Admin_Controller {
 				$this->load->view('_layout_main', $this->data);
 			} else {
 
-				// $sectionID = $this->input->post("sectionID");
-				// if($sectionID == 0) {
-				// 	$this->data['sectionID'] = 0;
-				// } else {
-				// 	$this->data['sections'] = $this->section_m->get_allsection($classesID);
-				// 	$this->data['sectionID'] = $this->input->post("sectionID");
-				// }
-				//
-				// $section = $this->section_m->get_section($sectionID);
+				$sectionID = $this->input->post("sectionID");
+				if($sectionID == 0) {
+					$this->data['sectionID'] = 0;
+				} else {
+					$this->data['sections'] = $this->section_m->get_allsection($classesID);
+					$this->data['sectionID'] = $this->input->post("sectionID");
+				}
+
+				$section = $this->section_m->get_section($sectionID);
 				$array = array();
 				$array["name"] = $this->input->post("name");
 
@@ -315,15 +315,15 @@ class Student extends Admin_Controller {
 				$array["phone"] = $this->input->post("phone");
 				$array["address"] = $this->input->post("address");
 				$array["classesID"] = $this->input->post("classesID");
-				// $array["sectionID"] = $this->input->post("sectionID");
+				$array["sectionID"] = $this->input->post("sectionID");
 				$array["roll"] = $this->input->post("roll");
 				$array["bloodgroup"] = $this->input->post("bloodgroup");
 				$array["state"] = $this->input->post("state");
 				$array["country"] = $this->input->post("country");
 				$array["registerNO"] = $this->input->post("registerNO");
 
-				// $array["sibling_1"] = $this->input->post("sibling_1");
-				// $array["sibling_1"] = $this->input->post("sibling_1");
+				$array["sibling_1"] = $this->input->post("sibling_1");
+				$array["sibling_2"] = $this->input->post("sibling_2");
 
 				// $array["username"] = $this->input->post("IC");
 				// $array['password'] = $this->student_m->hash($this->input->post("password"));
@@ -360,7 +360,7 @@ class Student extends Admin_Controller {
 
 				$studentID = $this->db->insert_id();
 
-				// $section = $this->section_m->get_section($this->input->post("sectionID"));
+				$section = $this->section_m->get_section($this->input->post("sectionID"));
 				$classes = $this->classes_m ->get_classes($this->input->post("classesID"));
 
 				if(count($classes)) {
@@ -369,11 +369,11 @@ class Student extends Admin_Controller {
 					$setClasses = NULL;
 				}
 
-				// if(count($section)) {
-				// 	$setSection = $section->section;
-				// } else {
-				// 	$setSection = NULL;
-				// }
+				if(count($section)) {
+					$setSection = $section->section;
+				} else {
+					$setSection = NULL;
+				}
 
 				$arrayStudentRelation = array(
 					'srstudentID' => $studentID,
@@ -382,12 +382,12 @@ class Student extends Admin_Controller {
 					'srclasses' => $setClasses,
 					'srroll' => $this->input->post("roll"),
 					'srregisterNO' => $this->input->post("registerNO"),
-					// 'srsectionID' => $this->input->post("sectionID"),
-					// 'srsection' => $setSection,
+					'srsectionID' => $this->input->post("sectionID"),
+					'srsection' => $setSection,
 					'srschoolyearID' => $this->data['siteinfos']->school_year
 				);
 
-				// $this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
+				$this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
 
 				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
 				redirect(base_url("student/index"));
