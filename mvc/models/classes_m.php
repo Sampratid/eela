@@ -14,17 +14,17 @@ class Classes_m extends MY_Model {
 	function get_join_classes() {
 		$this->db->select('*');
 		$this->db->from('classes');
-		$this->db->join('teacher', 'classes.teacherID = teacher.teacherID', 'LEFT');
+		// $this->db->join('teacher', 'classes.teacherID = teacher.teacherID', 'LEFT');
 		$this->db->order_by('classes_numeric asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-	function get_teacher() {
-		$this->db->select('*')->from('teacher');
-		$query = $this->db->get();
-		return $query->result();
-	}
+	// function get_teacher() {
+	// 	$this->db->select('*')->from('teacher');
+	// 	$query = $this->db->get();
+	// 	return $query->result();
+	// }
 
 	function get_classes($array=NULL, $signal=FALSE) {
 		$query = parent::get($array, $signal);

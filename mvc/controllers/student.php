@@ -84,11 +84,11 @@ class Student extends Admin_Controller {
 				'label' => $this->lang->line("student_classes"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classesID'
 			),
-			array(
-				'field' => 'sectionID',
-				'label' => $this->lang->line("student_section"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
-			),
+			// array(
+			// 	'field' => 'sectionID',
+			// 	'label' => $this->lang->line("student_section"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
+			// ),
 			array(
 				'field' => 'registerNO',
 				'label' => $this->lang->line("student_registerNO"),
@@ -108,18 +108,18 @@ class Student extends Admin_Controller {
 				'field' => 'photo',
 				'label' => $this->lang->line("student_photo"),
 				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
-			),
-
-			array(
-				'field' => 'username',
-				'label' => $this->lang->line("student_username"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean|callback_lol_username'
-			),
-			array(
-				'field' => 'password',
-				'label' => $this->lang->line("student_password"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean'
 			)
+
+			// array(
+			// 	'field' => 'username',
+			// 	'label' => $this->lang->line("student_username"),
+			// 	'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean|callback_lol_username'
+			// ),
+			// array(
+			// 	'field' => 'password',
+			// 	'label' => $this->lang->line("student_password"),
+			// 	'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean'
+			// )
 		);
 		return $rules;
 	}
@@ -276,17 +276,18 @@ class Student extends Admin_Controller {
 
 		$usertype = $this->session->userdata("usertype");
 		$this->data['classes'] = $this->student_m->get_classes();
-		$this->data['sections'] = $this->section_m->get_section();
+		// $this->data['sections'] = $this->section_m->get_section();
 		$this->data['parents'] = $this->parents_m->get_parents();
+
 
 		$classesID = $this->input->post("classesID");
 
-		if($classesID != 0) {
-			$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" =>$classesID));
-		} else {
-			$this->data['sections'] = "empty";
-		}
-		$this->data['sectionID'] = $this->input->post("sectionID");
+		// if($classesID != 0) {
+		// 	$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" =>$classesID));
+		// } else {
+		// 	$this->data['sections'] = "empty";
+		// }
+		// $this->data['sectionID'] = $this->input->post("sectionID");
 
 		if($_POST) {
 			$rules = $this->rules();
@@ -296,15 +297,15 @@ class Student extends Admin_Controller {
 				$this->load->view('_layout_main', $this->data);
 			} else {
 
-				$sectionID = $this->input->post("sectionID");
-				if($sectionID == 0) {
-					$this->data['sectionID'] = 0;
-				} else {
-					$this->data['sections'] = $this->section_m->get_allsection($classesID);
-					$this->data['sectionID'] = $this->input->post("sectionID");
-				}
-
-				$section = $this->section_m->get_section($sectionID);
+				// $sectionID = $this->input->post("sectionID");
+				// if($sectionID == 0) {
+				// 	$this->data['sectionID'] = 0;
+				// } else {
+				// 	$this->data['sections'] = $this->section_m->get_allsection($classesID);
+				// 	$this->data['sectionID'] = $this->input->post("sectionID");
+				// }
+				//
+				// $section = $this->section_m->get_section($sectionID);
 				$array = array();
 				$array["name"] = $this->input->post("name");
 
@@ -314,19 +315,24 @@ class Student extends Admin_Controller {
 				$array["phone"] = $this->input->post("phone");
 				$array["address"] = $this->input->post("address");
 				$array["classesID"] = $this->input->post("classesID");
-				$array["sectionID"] = $this->input->post("sectionID");
+				// $array["sectionID"] = $this->input->post("sectionID");
 				$array["roll"] = $this->input->post("roll");
 				$array["bloodgroup"] = $this->input->post("bloodgroup");
 				$array["state"] = $this->input->post("state");
 				$array["country"] = $this->input->post("country");
 				$array["registerNO"] = $this->input->post("registerNO");
-				$array["username"] = $this->input->post("username");
-				$array['password'] = $this->student_m->hash($this->input->post("password"));
+
+				// $array["sibling_1"] = $this->input->post("sibling_1");
+				// $array["sibling_1"] = $this->input->post("sibling_1");
+
+				// $array["username"] = $this->input->post("IC");
+				// $array['password'] = $this->student_m->hash($this->input->post("password"));
 				$array['usertypeID'] = 3;
 				$array['parentID'] = $this->input->post('guargianID');
 				$array['library'] = 0;
 				$array['hostel'] = 0;
 				$array['transport'] = 0;
+
 				$array['create_date'] = date("Y-m-d");
 				$array['createschoolyearID'] = $this->data['siteinfos']->school_year;
 				$array['schoolyearID'] = $this->data['siteinfos']->school_year;
@@ -340,14 +346,21 @@ class Student extends Admin_Controller {
 				if($this->input->post('dob')) {
 					$array["dob"] 		= date("Y-m-d", strtotime($this->input->post("dob")));
 				}
+
+				 // object oriented
+				// $fromDOB = new DateTime('1970-02-01');
+				// $toDOB  = new DateTime('today');
+				// $array['age'] = $fromDOB->diff($toDOB)->y;
+
+
+
 				$array['photo'] = $this->upload_data['file']['file_name'];
-				// For Email
-				$this->usercreatemail($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
 
 				$this->student_m->insert_student($array);
+
 				$studentID = $this->db->insert_id();
 
-				$section = $this->section_m->get_section($this->input->post("sectionID"));
+				// $section = $this->section_m->get_section($this->input->post("sectionID"));
 				$classes = $this->classes_m ->get_classes($this->input->post("classesID"));
 
 				if(count($classes)) {
@@ -356,11 +369,11 @@ class Student extends Admin_Controller {
 					$setClasses = NULL;
 				}
 
-				if(count($section)) {
-					$setSection = $section->section;
-				} else {
-					$setSection = NULL;
-				}
+				// if(count($section)) {
+				// 	$setSection = $section->section;
+				// } else {
+				// 	$setSection = NULL;
+				// }
 
 				$arrayStudentRelation = array(
 					'srstudentID' => $studentID,
@@ -369,12 +382,12 @@ class Student extends Admin_Controller {
 					'srclasses' => $setClasses,
 					'srroll' => $this->input->post("roll"),
 					'srregisterNO' => $this->input->post("registerNO"),
-					'srsectionID' => $this->input->post("sectionID"),
-					'srsection' => $setSection,
+					// 'srsectionID' => $this->input->post("sectionID"),
+					// 'srsection' => $setSection,
 					'srschoolyearID' => $this->data['siteinfos']->school_year
 				);
-				
-				$this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
+
+				// $this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
 
 				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
 				redirect(base_url("student/index"));
@@ -447,6 +460,8 @@ class Student extends Admin_Controller {
 							$array["dob"] = NULL;
 						}
 
+						// var_dump($this->data);
+						// die();
 
 						$studentReletion = $this->studentrelation_m->get_order_by_studentrelation(array('srstudentID' => $id, 'srschoolyearID' => $this->data['siteinfos']->school_year));
 						$section = $this->section_m->get_section($this->input->post("sectionID"));
@@ -507,6 +522,9 @@ class Student extends Admin_Controller {
 			$this->data["subview"] = "error";
 			$this->load->view('_layout_main', $this->data);
 		}
+
+
+
 
 	}
 
