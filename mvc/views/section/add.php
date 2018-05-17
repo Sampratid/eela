@@ -33,22 +33,7 @@
                         </span>
                     </div>
 
-                    <?php
-                        if(form_error('category'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
-                    ?>
-                        <label for="category" class="col-sm-2 control-label">
-                            <?=$this->lang->line("section_category")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="category" name="category" value="<?=set_value('category')?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('category'); ?>
-                        </span>
-                    </div>
+                   <!-- capacity - fees -->
 
                     <?php
                         if(form_error('capacity'))

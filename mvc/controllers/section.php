@@ -30,11 +30,11 @@ class Section extends Admin_Controller {
 				'label' => $this->lang->line("section_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]|callback_unique_section'
 			),
-			array(
-				'field' => 'category',
-				'label' => $this->lang->line("section_category"),
-				'rules' => 'trim|required|max_length[128]|xss_clean'
-			),
+			// array(
+			// 	'field' => 'category',
+			// 	'label' => $this->lang->line("section_category"),
+			// 	'rules' => 'trim|required|max_length[128]|xss_clean'
+			// ),
 			array(
 				'field' => 'capacity',
 				'label' => $this->lang->line("section_capacity"),
@@ -104,7 +104,7 @@ class Section extends Admin_Controller {
 			} else {
 				$array = array(
 					"section" => $this->input->post("section"),
-					"category" => $this->input->post("category"),
+					// "category" => $this->input->post("category"),
 					"capacity" => $this->input->post("capacity"),
 					"classesID" => $this->input->post("classesID"),
 					"teacherID" => $this->input->post("teacherID"),
@@ -154,7 +154,7 @@ class Section extends Admin_Controller {
 					} else {
 						$array = array(
 							"section" => $this->input->post("section"),
-							"category" => $this->input->post("category"),
+							// "category" => $this->input->post("category"),
 							"capacity" => $this->input->post("capacity"),
 							"classesID" => $this->input->post("classesID"),
 							"teacherID" => $this->input->post("teacherID"),

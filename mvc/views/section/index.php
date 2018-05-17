@@ -50,7 +50,7 @@
                             <tr>
                                 <th class="col-lg-1"><?=$this->lang->line('slno')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('section_name')?></th>
-                                <th class="col-lg-2"><?=$this->lang->line('section_category')?></th>
+                                <!-- <th class="col-lg-2"><?=$this->lang->line('section_category')?></th> -->
                                 <th class="col-lg-2"><?=$this->lang->line('section_capacity')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('section_teacher_name')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('section_note')?></th>
@@ -68,9 +68,9 @@
                                     <td data-title="<?=$this->lang->line('section_name')?>">
                                         <?php echo $section->section; ?>
                                     </td>
-                                    <td data-title="<?=$this->lang->line('section_category')?>">
-                                        <?php echo $section->category; ?>
-                                    </td>
+                                    <!-- <td data-title="<?=$this->lang->line('section_category')?>">
+                                     //   <?php echo $section->category; ?>
+                                    </td> -->
                                     <td data-title="<?=$this->lang->line('section_capacity')?>">
                                         <?php echo $section->capacity; ?>
                                     </td>
