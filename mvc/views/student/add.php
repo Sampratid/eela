@@ -152,22 +152,7 @@
                     </div> -->
 
 
-                    <?php
-                        if(form_error('religion'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
-                    ?>
-                        <label for="religion" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_religion")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="religion" name="religion" value="<?=set_value('religion')?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('religion'); ?>
-                        </span>
-                    </div>
+                   
 
                     <?php
                         if(form_error('email'))
@@ -377,25 +362,25 @@
                      </div>
 
 
-                    <?php
-                        if(form_error('registerNO'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
+                  <!--   <?php
+                   ///     if(form_error('registerNO'))
+                    //        echo "<div class='form-group has-error' >";
+                      //  else
+                        //    echo "<div class='form-group' >";
                     ?>
                         <label for="registerNO" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_registerNO")?> <span class="text-red">*</span>
+                      //      <?=$this->lang->line("student_registerNO")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="registerNO" name="registerNO" value="<?=set_value('registerNO')?>" >
                         </div>
                         <span class="col-sm-4 control-label">
-                            <?php echo form_error('registerNO'); ?>
+                         //   <?php echo form_error('registerNO'); ?>
                         </span>
                     </div>
 
 
-                    <!-- <label for="sibling_1" class="col-sm-2 control-label">
+                    <label for="sibling_1" class="col-sm-2 control-label">
                         Sibling Name 1
 
                     </label>
@@ -411,7 +396,7 @@
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="sibling_2" name="sibling_2" value="<?=set_value('sibling_2')?>" >
                     </div>
-                  </div> -->
+                  </div>
 
 
                     <?php
@@ -429,7 +414,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('roll'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                         if(form_error('photo'))
