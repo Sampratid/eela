@@ -60,6 +60,7 @@
                                         <a  href="<?=base_url('parents/add')?>">
                                             <i class="fa fa-plus"></i>
                                             <?=$this->lang->line('student_quick_add')?>
+                                            
                                         </a>
                                     </span>
                                 </div>
