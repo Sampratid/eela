@@ -17,13 +17,13 @@
         <div class="row">
             <div class="col-sm-12">
 
-                <?php 
+                <?php
                     $usertype = $this->session->userdata("usertype");
                     if(permissionChecker('classes_add')) {
                 ?>
                     <h5 class="page-header">
                         <a href="<?php echo base_url('classes/add') ?>">
-                            <i class="fa fa-plus"></i> 
+                            <i class="fa fa-plus"></i>
                             <?=$this->lang->line('add_title')?>
                         </a>
                     </h5>
@@ -36,7 +36,7 @@
                                 <th class="col-lg-1"><?=$this->lang->line('slno')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('classes_name')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('classes_numeric')?></th>
-                                <th class="col-lg-3"><?=$this->lang->line('teacher_name')?></th>
+                                <!-- <th class="col-lg-3"><?=$this->lang->line('teacher_name')?></th> -->
                                 <th class="col-lg-2"><?=$this->lang->line('classes_note')?></th>
                                  <?php if(permissionChecker('classes_edit') || permissionChecker('classes_delete')) { ?>
                                 <th class="col-lg-2"><?=$this->lang->line('action')?></th>
@@ -55,9 +55,9 @@
                                     <td data-title="<?=$this->lang->line('classes_numeric')?>">
                                         <?php echo $class->classes_numeric; ?>
                                     </td>
-                                    <td data-title="<?=$this->lang->line('teacher_name')?>">
+                                    <!-- <td data-title="<?=$this->lang->line('teacher_name')?>">
                                         <?php echo $class->name; ?>
-                                    </td>
+                                    </td> -->
                                     <td data-title="<?=$this->lang->line('classes_note')?>">
                                         <?php echo $class->note; ?>
                                     </td>

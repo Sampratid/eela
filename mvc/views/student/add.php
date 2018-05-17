@@ -150,7 +150,7 @@
                            // <?php echo form_error('bloodgroup'); ?>
                         </span>
                     </div> -->
-                    
+
 
                     <?php
                         if(form_error('religion'))
@@ -378,7 +378,7 @@
                         </span>
                     </div>
 
-                    <?php
+                    <!-- <?php
                         if(form_error('username'))
                             echo "<div class='form-group has-error' >";
                         else
@@ -388,13 +388,13 @@
                             <?=$this->lang->line("student_username")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="username" name="username" value="<?=set_value('username')?>" >
+                            <input type="text" class="form-control" id="IC" name="username" value="<?=set_value('username')?>" >
                         </div>
                          <span class="col-sm-4 control-label">
                             <?php echo form_error('username'); ?>
                         </span>
-                    </div>
-
+                    </div> -->
+<!--
                     <?php
                         if(form_error('password'))
                             echo "<div class='form-group has-error' >";
@@ -410,7 +410,7 @@
                          <span class="col-sm-4 control-label">
                             <?php echo form_error('password'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">
@@ -419,7 +419,7 @@
                     </div>
                 </form>
 
-               
+
             </div> <!-- col-sm-8 -->
 
         </div><!-- row -->
